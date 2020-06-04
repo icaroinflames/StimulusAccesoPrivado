@@ -1,15 +1,16 @@
-package com.example.stimulus;
+package mobi.stimulus.accesoprivado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import mobi.stimulus.accesoprivado.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setLoadsImagesAutomatically(true);
         webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webSettings.setMediaPlaybackRequiresUserGesture(false);
-        
+
         //webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("https://stimulus.mobi/user_access/app/#!/login");
+        webView.loadUrl("https://stimulus.mobi/user_access/app/");
 
         // Forzamos el webview para que abra los enlaces internos dentro de la la APP
         webView.setWebViewClient(new WebViewClient());

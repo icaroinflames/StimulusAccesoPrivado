@@ -1,4 +1,4 @@
-package com.example.stimulus;
+package mobi.stimulus.accesoprivado;
 
 import org.junit.Test;
 
