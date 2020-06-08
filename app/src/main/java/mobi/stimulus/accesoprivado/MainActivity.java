@@ -3,6 +3,7 @@ package mobi.stimulus.accesoprivado;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.webkit.CookieManager;
@@ -115,6 +116,27 @@ public class MainActivity extends AppCompatActivity {
         webView.loadUrl("https://stimulus.mobi/user_access/app/");
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
+
+        NoSalirDelDominio webClient = new NoSalirDelDominio();
+        webClient.setContext(this);
+
+        webView.setWebViewClient(webClient);
     }
 
+}
+class NoSalirDelDominio extends WebViewClient {
+    private Context context;
+
+    public void setContext(Context context){
+        this.context = context;
+    }
+
+    @Override
+    public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
+        if(url.contains("stimulus.mobi/admin")){
+            Toast.makeText(context,"No se puede salir de la página",Toast.LENGTH_SHORT).show();
+            view.loadUrl("https://stimulus.mobi/user_access/app/");
+        }
+        super.doUpdateVisitedHistory(view, url, isReload);
+    }
 }
